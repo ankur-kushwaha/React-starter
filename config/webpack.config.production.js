@@ -1,16 +1,16 @@
-const path = require('path');
-const merge = require('webpack-merge');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const config = require('./webpack.config.base');
+const path = require('path')
+const merge = require('webpack-merge')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const config = require('./webpack.config.base')
 
 const GLOBALS = {
   'process.env': {
     'NODE_ENV': JSON.stringify('production')
   },
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-};
+}
 
 module.exports = merge(config, {
   debug: false,
@@ -56,9 +56,7 @@ module.exports = merge(config, {
       {
         test: /\.scss$/,
         include: [
-          path.resolve(__dirname, '../src/client/assets/javascripts'),
-          path.resolve(__dirname, '../src/client/assets/styles'),
-          path.resolve(__dirname, '../src/client/scripts')
+          path.resolve(__dirname, '../src')
         ],
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
@@ -98,5 +96,5 @@ module.exports = merge(config, {
         })
       }
     ]
-  },
-});
+  }
+})
