@@ -1,14 +1,14 @@
-const merge = require('webpack-merge');
-const webpack = require('webpack');
-const config = require('./webpack.config.base');
-const path = require('path');
+const merge = require('webpack-merge')
+const webpack = require('webpack')
+const config = require('./webpack.config.base')
+const path = require('path')
 
 const GLOBALS = {
   'process.env': {
     'NODE_ENV': JSON.stringify('development')
   },
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
-};
+}
 
 module.exports = merge(config, {
   debug: true,
@@ -18,7 +18,7 @@ module.exports = merge(config, {
     application: [
       'webpack-hot-middleware/client',
       'react-hot-loader/patch',
-       'development'
+      'development'
     ],
     vendor: ['react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'redux']
   },
@@ -32,7 +32,7 @@ module.exports = merge(config, {
       {
         test: /\.scss$/,
         include: [
-          path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, '../src')
         ],
         loaders: [
           'style',
@@ -66,4 +66,4 @@ module.exports = merge(config, {
       }
     ]
   }
-});
+})

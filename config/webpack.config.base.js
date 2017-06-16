@@ -1,8 +1,8 @@
 // Common Webpack configuration used by webpack.config.development and webpack.config.production
 
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
+const path = require('path')
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
   output: {
@@ -66,6 +66,6 @@ module.exports = {
       autoprefixer({
         browsers: ['last 2 versions']
       })
-    ];
+    ]
   }
-};
+}
