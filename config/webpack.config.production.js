@@ -3,7 +3,6 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-// const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const config = require('./webpack.config.base')
 
 const GLOBALS = {
