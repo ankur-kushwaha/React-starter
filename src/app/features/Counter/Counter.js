@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from 'app/stories/button'
 
-export const Counter = ({ counter, increment }) => (
+export const Counter = ({ counter, increment, time, loadTime, status }) => (
   <div style={{ margin: '0 auto' }} >
     <h2>Counter: {counter}</h2>
     <Button onClick={increment}>Hello Buttons</Button>

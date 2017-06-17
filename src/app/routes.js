@@ -4,17 +4,16 @@ import loadCounter from 'bundle-loader?lazy!./features/Counter' // eslint-disabl
 import { Helmet } from 'react-helmet'
 import App from './App'
 
-import FriendsView from './features/friends/components/FriendsView'
+import HomeView from './features/Home'
 import NotFoundView from './components/NotFound'
 import Bundle from './utils/Bundle'
-// import {CounterView} from './features/Counter'
 
 // components load their module for initial visit
 
 export default (
   <App>
     <Switch>
-      <Route exact path='/' component={FriendsView} />
+      <Route exact path='/' component={HomeView} />
       <Route path='/counter' children={(props) => (
         <div>
           <Helmet><title>CounterView</title></Helmet>
@@ -23,6 +22,7 @@ export default (
           </Bundle>
         </div>
       )} />
+
       <Route path='/404' component={NotFoundView} />
       <Route component={NotFoundView} />
     </Switch>
