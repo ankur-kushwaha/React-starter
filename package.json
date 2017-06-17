@@ -23,7 +23,7 @@
     "clean:build": "rimraf build",
     "build:html": "node ./bin/buildHtml.js",
     "prestart": "npm run clean:build",
-    "start": "webpack-dashboard -c cyan -- node dev-server.js",
+    "start": "node dev-server.js",
     "webpack": "webpack --config config/webpack.config.development",
     "prebuild": "npm run clean:build",
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.production.js --progress",
@@ -85,7 +85,6 @@
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "2.1.0-beta.21",
-    "webpack-dashboard": "0.1.8",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.12.2",
     "webpack-merge": "0.14.1"
