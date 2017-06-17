@@ -1,5 +1,6 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { render } from 'react-snapshot'
+
 // import { browserHistory } from 'react-router'
 import { AppContainer } from 'react-hot-loader'
 import Redbox from 'redbox-react'
