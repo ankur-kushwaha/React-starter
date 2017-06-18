@@ -1,6 +1,3 @@
+import CounterView from "./CounterContainer";
 
-import CounterView from './CounterContainer'
-
-export {
-    CounterView
-}
+export { CounterView };
