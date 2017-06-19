@@ -12,7 +12,7 @@ export const HomeView = ({ loadTime, status, time }) => (
       src={DuckImage}
     />
     <button onClick={loadTime}>Load Data</button>
-    {status === "PENDING" ? "PENDING" : JSON.stringify(time[0])}
+    {status === "PENDING" ? "PENDING" : JSON.stringify(time)}
   </div>
 );
 
