@@ -3,7 +3,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
-
+const config = require("config");
 module.exports = {
   output: {
     filename: "js/[name].js",
@@ -30,6 +30,9 @@ module.exports = {
       name: "vendor",
       filename: "js/vendor.bundle.js",
       minChunks: Infinity
+    }),
+    new webpack.DefinePlugin({
+      __APIURL__: JSON.stringify(config.get("apiUrl"))
     })
   ],
   module: {
