@@ -59,9 +59,12 @@
     "css-loader": "0.24.0",
     "eslint": "3.4.0",
     "eslint-plugin-react": "6.2.0",
+    "exports-loader": "^0.6.4",
     "extract-text-webpack-plugin": "2.0.0-beta.3",
     "file-loader": "0.9.0",
     "http-server": "0.9.0",
+    "husky": "^0.13.4",
+    "imports-loader": "^0.7.1",
     "jquery": "3.1.0",
     "jscs": "3.0.7",
     "jsdom": "9.4.5",
@@ -83,7 +86,6 @@
     "webpack": "2.1.0-beta.21",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.12.2",
-    "husky": "^0.13.4",
     "webpack-merge": "0.14.1"
   },
   "dependencies": {
@@ -91,6 +93,7 @@
     "babel-runtime": "6.11.6",
     "bundle-loader": "^0.5.5",
     "classnames": "2.2.5",
+    "config": "^1.26.1",
     "express": "4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "4.15.0",

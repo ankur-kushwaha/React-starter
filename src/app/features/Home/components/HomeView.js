@@ -11,13 +11,13 @@ export const HomeView = ({ loadTime, status, time }) => (
       className="duck"
       src={DuckImage}
     />
-    <button onClick={loadTime}>Load time</button>
-    {status === "PENDING" ? "PENDING" : time}
+    <button onClick={loadTime}>Load Data</button>
+    {status === "PENDING" ? "PENDING" : JSON.stringify(time[0])}
   </div>
 );
 
 HomeView.propTypes = {
-  loadTime: PropTypes.string,
+  loadTime: PropTypes.func,
   status: PropTypes.string,
   time: PropTypes.string
 };

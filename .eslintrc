@@ -23,7 +23,8 @@
     "react"
   ],
   "globals": {
-    "define": true
+    "define": true,
+    "__APIURL__": true
   },
   "rules": {
     "strict": [
