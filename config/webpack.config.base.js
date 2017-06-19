@@ -3,10 +3,11 @@
 const path = require("path");
 const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 const config = require("config");
 module.exports = {
   output: {
-    filename: "js/[name].js",
+    filename: "js/[name].[hash].js",
     path: path.resolve(__dirname, "../build"),
     publicPath: "/"
   },
@@ -28,11 +29,15 @@ module.exports = {
     // Shared code
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
-      filename: "js/vendor.bundle.js",
+      filename: "js/vendor.[hash].js",
       minChunks: Infinity
     }),
     new webpack.DefinePlugin({
       __APIURL__: JSON.stringify(config.get("apiUrl"))
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: "./src/index.html"
     })
   ],
   module: {
