@@ -3,6 +3,7 @@ const merge = require("webpack-merge");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+var CompressionPlugin = require("compression-webpack-plugin");
 const config = require("./webpack.config.base");
 
 const GLOBALS = {
@@ -53,6 +54,13 @@ module.exports = merge(config, {
     new ExtractTextPlugin({
       filename: "css/app.css",
       allChunks: true
+    }),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.(js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ],
   module: {
