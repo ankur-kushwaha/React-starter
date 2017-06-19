@@ -1,14 +1,25 @@
-import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
-import './HomeView.scss'
+import React from "react";
+import PropTypes from "prop-types";
+import DuckImage from "../assets/Duck.jpg";
+import "./HomeView.scss";
 
-export const HomeView = ({loadTime, status, time}) => (
+export const HomeView = ({ loadTime, status, time }) => (
   <div>
     <h4>Welcome!</h4>
-    <img alt='This is a sample, because Redux!' className='duck' src={DuckImage} />
-    <button onClick={loadTime} >Load time</button>
-    {status === 'PENDING' ? 'PENDING' : time}
+    <img
+      alt="This is a sample, because Redux!"
+      className="duck"
+      src={DuckImage}
+    />
+    <button onClick={loadTime}>Load time</button>
+    {status === "PENDING" ? "PENDING" : time}
   </div>
-)
+);
 
-export default HomeView
+HomeView.propTypes = {
+  loadTime: PropTypes.string,
+  status: PropTypes.string,
+  time: PropTypes.string
+};
+
+export default HomeView;

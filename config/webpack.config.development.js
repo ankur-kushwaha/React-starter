@@ -1,26 +1,33 @@
-const merge = require('webpack-merge')
-const webpack = require('webpack')
-const config = require('./webpack.config.base')
-const path = require('path')
+const merge = require("webpack-merge");
+const webpack = require("webpack");
+const config = require("./webpack.config.base");
+const path = require("path");
 
 const GLOBALS = {
-  'process.env': {
-    'NODE_ENV': JSON.stringify('development')
+  "process.env": {
+    NODE_ENV: JSON.stringify("development")
   },
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
-}
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || "true"))
+};
 
 module.exports = merge(config, {
   debug: true,
   cache: true,
-  devtool: 'cheap-module-eval-source-map',
+  devtool: "cheap-module-eval-source-map",
   entry: {
     application: [
-      'webpack-hot-middleware/client',
-      'react-hot-loader/patch',
-      'development'
+      "webpack-hot-middleware/client",
+      "react-hot-loader/patch",
+      "development"
     ],
-    vendor: ['react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'redux']
+    vendor: [
+      "react",
+      "react-dom",
+      "react-redux",
+      "react-router",
+      "react-router-redux",
+      "redux"
+    ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -31,14 +38,12 @@ module.exports = merge(config, {
       // Sass
       {
         test: /\.scss$/,
-        include: [
-          path.resolve(__dirname, '../src')
-        ],
+        include: [path.resolve(__dirname, "../src")],
         loaders: [
-          'style',
-          'css',
-          'postcss',
-          { loader: 'sass', query: { outputStyle: 'expanded' } }
+          "style",
+          "css",
+          "postcss",
+          { loader: "sass", query: { outputStyle: "expanded" } }
         ]
       },
       // Sass + CSS Modules
@@ -62,8 +67,8 @@ module.exports = merge(config, {
       // CSS
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: "style!css!postcss"
       }
     ]
   }
-})
+});

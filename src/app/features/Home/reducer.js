@@ -2,29 +2,23 @@
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  'TIME_PENDING': (state, action) => {
-    return {
-      ...state,
-      status: 'PENDING'
-    }
-  },
-  'TIME_FULFILLED': (state, action) => {
-    return {
-      ...state,
-      status: 'FULFILLED',
-      time: action.payload
-    }
-  }
-}
+  TIME_PENDING: (state) => ({
+    ...state,
+    status: "PENDING"
+  }),
+  TIME_FULFILLED: (state, action) => ({
+    ...state,
+    status: "FULFILLED",
+    time: action.payload
+  })
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {
+const initialState = {};
+export default function homeReducer(state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type];
 
-}
-export default function homeReducer (state = initialState, action) {
-  const handler = ACTION_HANDLERS[action.type]
-
-  return handler ? handler(state, action) : state
+  return handler ? handler(state, action) : state;
 }

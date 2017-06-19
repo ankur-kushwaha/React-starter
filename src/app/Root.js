@@ -1,12 +1,12 @@
 // @flow
 
-import React, { PropTypes } from 'react'
-import { Provider } from 'react-redux'
+import React, { PropTypes } from "react";
+import { Provider } from "react-redux";
 
-import {BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router } from "react-router-dom";
 
-import routes from './routes'
-import { SENTRY_URL } from './config'
+import routes from "./routes";
+import { SENTRY_URL } from "./config";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -15,38 +15,38 @@ import { SENTRY_URL } from './config'
 // You can ignore this warning. For details, see:
 // https://github.com/reactjs/react-router/issues/2182
 
-window.Raven && window.Raven.config(SENTRY_URL).install()
+window.Raven && window.Raven.config(SENTRY_URL).install();
 
 const Root = ({ store, history }) => {
   let ComponentEl = (
     <Provider store={store}>
       <Router history={history}>
-        {routes }
+        {routes}
       </Router>
     </Provider>
-  )
+  );
 
-  if (process.env.NODE_ENV !== 'production') {
-    const DevTools = require('./DevTools').default
+  if (process.env.NODE_ENV !== "production") {
+    const DevTools = require("./DevTools").default;
 
     ComponentEl = (
       <Provider store={store}>
         <div>
-          <Router history={history} >
+          <Router history={history}>
             {routes}
           </Router>
           {!window.devToolsExtension ? <DevTools /> : null}
         </div>
       </Provider>
-    )
+    );
   }
 
-  return ComponentEl
-}
+  return ComponentEl;
+};
 
 Root.propTypes = {
   history: PropTypes.object.isRequired,
   store: PropTypes.object.isRequired
-}
+};
 
-export default Root
+export default Root;
