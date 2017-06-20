@@ -22,7 +22,7 @@ module.exports = merge(config, {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.join(__dirname, "../src/client/assets/images"),
+        from: path.join(__dirname, "../src/assets/images"),
         to: "images"
       }
     ]),
@@ -64,7 +64,7 @@ module.exports = merge(config, {
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
-            { loader: "css-loader", query: { sourceMap: true } },
+            { loader: "css-loader" },
             {
               loader: "postcss-loader",
               options: {
@@ -77,7 +77,10 @@ module.exports = merge(config, {
                 ]
               }
             },
-            { loader: "sass-loader", query: { outputStyle: "compressed" } }
+            {
+              loader: "resolve-url-loader"
+            },
+            { loader: "sass-loader" }
           ]
         })
       },

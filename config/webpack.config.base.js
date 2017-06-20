@@ -13,8 +13,8 @@ module.exports = {
   },
   resolve: {
     modules: [
-      path.join(__dirname, "../src/client/assets"),
-      path.join(__dirname, "../src/"),
+      //path.join(__dirname, "../src/client/assets"),
+      path.join(__dirname, "../src"),
       "node_modules"
     ],
     alias: {
@@ -60,19 +60,25 @@ module.exports = {
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: "url-loader",
-        options: {
-          limit: 8192,
-          name: "images/[name].[ext]?[hash]"
-        }
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+              name: "images/[name].[ext]?[hash]"
+            }
+          }
+        ]
       },
       // Fonts
       {
         test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader",
-        options: {
-          limit: 8192,
-          name: "fonts/[name].[ext]?[hash]"
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 8192,
+            name: "fonts/[name].[ext]?[hash]"
+          }
         }
       }
     ]

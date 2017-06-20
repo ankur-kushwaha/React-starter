@@ -1,4 +1,18 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@font-face
+{
+  font-family: Roboto;
+  src: url('../assets/fonts/Roboto/Roboto-Light.ttf');
+}
+
+
 body {
-  background: #f1f1f1;
+  font-family: 'Roboto';
+  background: white;
   padding-top: 30px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+   font-family: 'Roboto';
 }

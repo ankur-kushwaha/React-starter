@@ -83,6 +83,7 @@
     "redux-devtools-log-monitor": "1.0.11",
     "redux-immutable-state-invariant": "1.2.3",
     "redux-slider-monitor": "1.0.7",
+    "resolve-url-loader": "^2.0.3",
     "rimraf": "2.5.4",
     "sass-loader": "4.0.1",
     "style-loader": "0.13.1",
@@ -94,6 +95,7 @@
   },
   "dependencies": {
     "babel-runtime": "6.11.6",
+    "bootstrap": "3",
     "bundle-loader": "^0.5.5",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "4.15.0",

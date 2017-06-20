@@ -1,7 +1,6 @@
 const merge = require("webpack-merge");
 const webpack = require("webpack");
 const config = require("./webpack.config.base");
-const path = require("path");
 
 const GLOBALS = {
   "process.env": {
@@ -13,6 +12,9 @@ const GLOBALS = {
 module.exports = merge(config, {
   cache: true,
   devtool: "cheap-module-eval-source-map",
+  output: {
+    publicPath: "http://localhost:3000/"
+  },
   entry: {
     application: [
       "webpack-hot-middleware/client",
@@ -30,13 +32,15 @@ module.exports = merge(config, {
       // Sass
       {
         test: /\.scss$/,
-        include: [path.resolve(__dirname, "../src")],
         use: [
           {
-            loader: "style-loader"
+            loader: "style-loader", // creates style nodes from JS strings
+            options: {
+              sourceMap: true
+            }
           },
           {
-            loader: "css-loader",
+            loader: "css-loader", // translates CSS into CommonJS
             options: {
               sourceMap: true
             }
@@ -56,35 +60,13 @@ module.exports = merge(config, {
           {
             loader: "sass-loader",
             options: {
-              outputStyle: "expanded",
-              sourceMap: true,
-              includePaths: [__dirname, "../src"]
+              sourceMap: true
             }
           }
         ]
       },
-      // Sass + CSS Modules
-      // {
-      //   test: /\.scss$/,
-      //   include: /src\/client\/assets\/javascripts/,
-      //   loaders: [
-      //     'style',
-      //     {
-      //       loader: 'css',
-      //       query: {
-      //         modules: true,
-      //         importLoaders: 1,
-      //         localIdentName: '[path][name]__[local]--[hash:base64:5]'
-      //       }
-      //     },
-      //     'postcss',
-      //     { loader: 'sass', query: { outputStyle: 'expanded' } }
-      //   ]
-      // },
-      // CSS
       {
         test: /\.css$/,
-
         use: ["style-loader", "css-loader", "postcss-loader"]
       }
     ]
