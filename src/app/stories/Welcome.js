@@ -35,7 +35,7 @@ const styles = {
   }
 };
 
-const log = () => console.log("Welcome to storybook!");
+const log = () => window.console.log("Welcome to storybook!");
 
 export default class Welcome extends React.Component {
   constructor(props) {

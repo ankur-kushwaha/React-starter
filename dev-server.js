@@ -17,10 +17,11 @@ function log() {
   arguments[0] = "\nWebpack: " + arguments[0];
   console.log.apply(console, arguments);
 }
+compiler.apply(new webpack.ProgressPlugin());
 
 app.use(
   webpackDevMiddleware(compiler, {
-    noInfo: true,
+    noInfo: false,
     publicPath: config.output.publicPath,
     stats: {
       colors: true

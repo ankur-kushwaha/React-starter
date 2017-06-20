@@ -37,8 +37,8 @@ class Bundle extends Component {
   }
 }
 Bundle.propTypes = {
-  children: PropTypes.string,
-  load: PropTypes.string
+  children: PropTypes.func,
+  load: PropTypes.func
 };
 
 export default Bundle;

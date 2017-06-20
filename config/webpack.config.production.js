@@ -14,7 +14,6 @@ const GLOBALS = {
 };
 
 module.exports = merge(config, {
-  debug: false,
   devtool: "cheap-module-source-map",
   entry: {
     application: "production",
@@ -28,9 +27,8 @@ module.exports = merge(config, {
       }
     ]),
     // Avoid publishing files when compilation fails
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin(GLOBALS),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
@@ -58,17 +56,28 @@ module.exports = merge(config, {
   ],
   module: {
     noParse: /\.min\.js$/,
-    loaders: [
+    rules: [
       // Sass
       {
         test: /\.scss$/,
         include: [path.resolve(__dirname, "../src")],
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style",
-          loader: [
-            { loader: "css", query: { sourceMap: true } },
-            "postcss",
-            { loader: "sass", query: { outputStyle: "compressed" } }
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            { loader: "css-loader", query: { sourceMap: true } },
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: () => [
+                  // require("postcss-cssnext")(),
+                  require("autoprefixer")({
+                    browsers: ["last 2 versions"]
+                  }),
+                  require("cssnano")()
+                ]
+              }
+            },
+            { loader: "sass-loader", query: { outputStyle: "compressed" } }
           ]
         })
       },
@@ -95,9 +104,9 @@ module.exports = merge(config, {
       // CSS
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style",
-          loader: ["css", "postcss"]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          loader: ["css-loader", "postcss-loader"]
         })
       }
     ]
